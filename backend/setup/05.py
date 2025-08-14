@@ -1,3 +1,26 @@
+# ⚠️ DEPRECATED: This file has been refactored into a modular structure
+# 
+# The code in this file has been reorganized into the bio_rag/ package for better
+# maintainability, testability, and reusability. Please use the new modular version:
+#
+# 📁 New structure:
+#   bio_rag/config.py         - Configuration management
+#   bio_rag/data_parsers.py   - STRING database parsing
+#   bio_rag/graph_builder.py  - LlamaIndex and retriever setup
+#   bio_rag/rag_system.py     - Main RAG system logic
+#   bio_rag/utils.py          - Utility functions
+#   bio_rag/cli.py            - Interactive interface
+#   main.py                   - Entry point
+#   demo.py                   - Usage examples
+#
+# 🚀 Quick start with new version:
+#   python main.py --interactive
+#   python main.py --query "protein kinases"
+#
+# 📖 See README.md for complete documentation
+#
+# This file is kept for reference only.
+
 # requirements:
 # pip install llama-index==0.10.52 llama-index-embeddings-openai llama-index-llms-openai faiss-cpu python-dotenv
 
