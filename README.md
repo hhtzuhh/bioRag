@@ -2,6 +2,14 @@
 
 A modular, scalable bio-RAG system that uses **recursive retrieval** to handle megacontext scenarios for protein cluster analysis. Built with LlamaIndex and designed to scale to millions of proteins without context overflow.
 
+## 📺 Demo Video
+
+<div align="center">
+  <a href="https://youtu.be/Vn04JO0yn1Q">
+    <img src="https://img.youtube.com/vi/Vn04JO0yn1Q/maxresdefault.jpg" alt="BioRAG Demo Video" width="600">
+  </a>
+</div>
+
 ## 🔄 Recursive Retrieval Architecture
 
 The system implements a two-stage retrieval strategy:
