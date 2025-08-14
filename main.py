@@ -16,8 +16,9 @@ import argparse
 import sys
 from pathlib import Path
 
-# Add the current directory to Python path for imports
-sys.path.append(str(Path(__file__).parent))
+# Add the backend directory to Python path for imports
+backend_dir = Path(__file__).parent / "backend"
+sys.path.append(str(backend_dir))
 
 from bio_rag import (
     BioRAGConfig, 

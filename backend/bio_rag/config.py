@@ -29,7 +29,7 @@ class BioRAGConfig:
     cluster_similarity_top_k: int = 5
     
     # Storage settings
-    persist_dir: str = "./storage"
+    persist_dir: str = "backend/storage"
     
     # Debug settings
     verbose: bool = True
@@ -43,10 +43,10 @@ class BioRAGConfig:
         """Initialize default data paths if not provided."""
         if self.data_paths is None:
             self.data_paths = {
-                "clusters_info": "data/9606.clusters.info.v12.0.txt",
-                "clusters_tree": "data/9606.clusters.tree.v12.0.txt", 
-                "clusters_proteins": "data/9606.clusters.proteins.v12.0.txt",
-                "protein_info": "data/9606.protein.info.v12.0.txt",
+                "clusters_info": "backend/data/9606.clusters.info.v12.0.txt",
+                "clusters_tree": "backend/data/9606.clusters.tree.v12.0.txt", 
+                "clusters_proteins": "backend/data/9606.clusters.proteins.v12.0.txt",
+                "protein_info": "backend/data/9606.protein.info.v12.0.txt",
             }
     
     def validate_paths(self) -> bool:
@@ -99,10 +99,10 @@ def get_mock_data_config() -> BioRAGConfig:
     """Get a configuration for mock/test data."""
     config = BioRAGConfig()
     config.data_paths = {
-        "clusters_info": "mockdata1/mock_clusters_info.txt",
-        "clusters_tree": "mockdata1/mock_clusters_tree.txt",
-        "clusters_proteins": "mockdata1/mock_clusters_proteins.txt", 
-        "protein_info": "mockdata1/mock_protein_info.txt",
+        "clusters_info": "backend/mockdata1/mock_clusters_info.txt",
+        "clusters_tree": "backend/mockdata1/mock_clusters_tree.txt",
+        "clusters_proteins": "backend/mockdata1/mock_clusters_proteins.txt", 
+        "protein_info": "backend/mockdata1/mock_protein_info.txt",
     }
     config.max_clusters = 100  # Smaller for testing
     config.max_proteins_per_cluster = 50

@@ -1,0 +1,17 @@
+.venv
+.env
+backend/archive
+backend/docs
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+.DS_Store
+backend/llama_persist
+backend/llama_persist01
+backend/llama_persist02
+backend/llama_persist*
+backend/storage/
+backend/data/
