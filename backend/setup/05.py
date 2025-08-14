@@ -187,117 +187,27 @@ def build_cluster_records(paths: dict) -> dict[str, ClusterNodeRec]:
 
 def build_graph_indexes(cluster_records: dict[str, ClusterNodeRec], persist_dir: str = "./storage"):
     """
-    Build hierarchical cluster structure with recursive retrieval capabilities.
-    Uses summary-first retrieval with per-cluster protein query engines via query_engine_dict.
+    Build hierarchical cluster structure with a CORRECT RecursiveRetriever setup.
+    This version uses sub-retrievers to fetch raw nodes for unified synthesis.
     """
+    os.makedirs(persist_dir, exist_ok=True)
     
     # Create a hash of the cluster data to detect changes
     data_hash = hashlib.md5(str(sorted(cluster_records.items())).encode()).hexdigest()
     hash_file = os.path.join(persist_dir, "data_hash.txt")
     index_dir = os.path.join(persist_dir, "recursive_index")
-    
-    # Check if we can load existing index
-    if os.path.exists(hash_file) and os.path.exists(index_dir):
-        with open(hash_file, 'r') as f:
-            stored_hash = f.read().strip()
-        
-        if stored_hash == data_hash:
-            print("📁 Loading existing index from storage...")
-            try:
-                storage_context = StorageContext.from_defaults(persist_dir=index_dir)
-                main_index = load_index_from_storage(storage_context)
-                
-                # Rebuild summary nodes and per-cluster protein query engines using unified approach
-                print("🔄 Rebuilding summary nodes and per-cluster protein engines...")
-                summary_nodes = []
-                query_engine_dict = {}
-                
-                for cid, rec in cluster_records.items():
-                    cluster_protein_names = [p["preferred_name"] for p in rec.proteins]
-                    summary_text = f"""Cluster ID: {cid}
-Summary: {rec.summary}
-Children clusters: {len(rec.children)}
-Child cluster IDs: {', '.join(rec.children) if rec.children else 'None'}
-Protein count: {len(rec.proteins)}
-Key proteins: {', '.join(cluster_protein_names)}
-"""
-                    
-                    engine_id = f"cluster_{cid}_proteins" # ID for the query engine
-                    
-                    # Use the same unified IndexNode approach as the new building section
-                    summary_as_index_node = IndexNode(
-                        text=summary_text,          # The text is the full summary.
-                        index_id=engine_id,          # It points to the protein engine.
-                        metadata={
-                            "node_type": "cluster_gateway", # New combined node type
-                            "cluster_id": cid,
-                            "level": "summary_and_index"
-                        }
-                    )
 
-                    summary_nodes.append(summary_as_index_node)
-                    
-                    # Build per-cluster protein nodes and query engine (same as new building section)
-                    if len(rec.proteins) > 0:
-                        protein_nodes = []
-                        for p in rec.proteins:
-                            protein_text = f"""Protein ID: {p['protein_id']}
-Preferred Name: {p['preferred_name']}
-Annotation: {p['annotation']}
-Size: {p['size']} amino acids
-Cluster: {cid}
-Cluster Summary: {rec.summary}
-"""
-                            protein_node = TextNode(
-                                text=protein_text,
-                                metadata={
-                                    "node_type": "protein",
-                                    "cluster_id": cid,
-                                    "protein_id": p['protein_id'],
-                                    "preferred_name": p['preferred_name'],
-                                    "level": "detail"
-                                }
-                            )
-                            protein_nodes.append(protein_node)
-                        
-                        protein_index = VectorStoreIndex(protein_nodes)
-                        protein_query_engine = protein_index.as_query_engine(similarity_top_k=3)
-                        query_engine_dict[engine_id] = protein_query_engine
-                
-                # Build a new index over summary nodes to enable entering engines
-                main_index = VectorStoreIndex(summary_nodes)
-                summary_retriever = main_index.as_retriever(similarity_top_k=2, verbose=True)
-                
-                recursive_retriever = RecursiveRetriever(
-                    "vector",
-                    retriever_dict={"vector": summary_retriever},
-                    query_engine_dict=query_engine_dict,
-                    verbose=True,
-                )
-                
-                recursive_query_engine = RetrieverQueryEngine.from_args(
-                    retriever=recursive_retriever,
-                    response_mode="tree_summarize",
-                    verbose=True
-                )
-                
-                print("✅ Successfully loaded existing index!")
-                print(f"  - Summary nodes (rebuilt): {len(summary_nodes)}")
-                print(f"  - Protein engines: {len(query_engine_dict)}")
-                
-                return recursive_query_engine, main_index
-            except Exception as e:
-                print(f"⚠️  Failed to load existing index: {e}")
-                print("Building new index...")
-    
-    print("🏗️  Building new recursive retrieval index...")
-    print("📚 Using summary-first + per-cluster protein engines pattern...")
-    
-    # 1) Build summary nodes
-    summary_nodes = []
-    query_engine_dict = {}
-    
+    # --- Build in-memory components (nodes and sub-retrievers) ---
+    # This logic is needed whether we load or build the main index from disk.
+    print("🧠 Building in-memory components (gateway nodes and sub-retrievers)...")
+    gateway_nodes = []
+    sub_retriever_dict = {}
+
     for cid, rec in cluster_records.items():
+        # This ID links the gateway node to its corresponding sub-retriever
+        retriever_id = f"cluster_{cid}_proteins"
+        
+        # Create a single gateway node per cluster
         cluster_protein_names = [p["preferred_name"] for p in rec.proteins]
         summary_text = f"""Cluster ID: {cid}
 Summary: {rec.summary}
@@ -306,68 +216,77 @@ Child cluster IDs: {', '.join(rec.children) if rec.children else 'None'}
 Protein count: {len(rec.proteins)}
 Key proteins: {', '.join(cluster_protein_names)}
 """
-        
-        engine_id = f"cluster_{cid}_proteins" # ID for the query engine
-        
-        # 💡 YOUR PROPOSED CHANGE IS HERE 💡
-        # Combine the summary and index node into a single IndexNode.
-        summary_as_index_node = IndexNode(
-            text=summary_text,          # The text is the full summary.
-            index_id=engine_id,          # It points to the protein engine.
+        gateway_node = IndexNode(
+            text=summary_text,
+            index_id=retriever_id, # This ID points to the sub-retriever
             metadata={
-                "node_type": "cluster_gateway", # New combined node type
+                "node_type": "cluster_gateway",
                 "cluster_id": cid,
-                "level": "summary_and_index"
             }
         )
-
-        summary_nodes.append(summary_as_index_node)
+        gateway_nodes.append(gateway_node)
         
-        # 2) Per-cluster IndexNode + protein engine
+        # --- KEY CHANGE 1: Build a sub-RETRIEVER, not a query engine ---
         if len(rec.proteins) > 0:
-            # Build per-cluster protein nodes and a proper query engine
-            protein_nodes = []
-            for p in rec.proteins:
-                protein_text = f"""Protein ID: {p['protein_id']}
+            protein_nodes = [
+                TextNode(
+                    text=f"""Protein ID: {p['protein_id']}
 Preferred Name: {p['preferred_name']}
 Annotation: {p['annotation']}
 Size: {p['size']} amino acids
 Cluster: {cid}
-Cluster Summary: {rec.summary}
-"""
-                protein_node = TextNode(
-                    text=protein_text,
+Cluster Summary: {rec.summary}""",
                     metadata={
                         "node_type": "protein",
                         "cluster_id": cid,
                         "protein_id": p['protein_id'],
-                        "preferred_name": p['preferred_name'],
-                        "level": "detail"
                     }
-                )
-                protein_nodes.append(protein_node)
-            
+                ) for p in rec.proteins
+            ]
             protein_index = VectorStoreIndex(protein_nodes)
-            protein_query_engine = protein_index.as_query_engine(similarity_top_k=3)
-            query_engine_dict[engine_id] = protein_query_engine
+            protein_retriever = protein_index.as_retriever(similarity_top_k=5)
+            sub_retriever_dict[retriever_id] = protein_retriever
+
+    # --- Loading or Building the Main Vector Index ---
+    # This block now correctly handles caching for the main index embeddings.
+    if os.path.exists(hash_file) and os.path.exists(index_dir):
+        with open(hash_file, 'r') as f:
+            stored_hash = f.read().strip()
+        if stored_hash == data_hash:
+            print(f"📁 Loading existing main_index from {index_dir}...")
+            storage_context = StorageContext.from_defaults(persist_dir=index_dir)
+            main_index = load_index_from_storage(storage_context)
+            print("✅ Successfully loaded main_index from disk.")
+        else:
+            print("⚠️ Data has changed. Building new main_index...")
+            main_index = VectorStoreIndex(gateway_nodes)
+            main_index.storage_context.persist(persist_dir=index_dir)
+            with open(hash_file, 'w') as f: f.write(data_hash)
+            print("✅ New main_index built and saved to disk.")
+    else:
+        print("🏗️ No existing index found. Building new main_index...")
+        main_index = VectorStoreIndex(gateway_nodes)
+        main_index.storage_context.persist(persist_dir=index_dir)
+        with open(hash_file, 'w') as f: f.write(data_hash)
+        print("✅ New main_index built and saved to disk.")
+
+    # --- Assemble the final query engine with the CORRECTED RecursiveRetriever ---
+    print("🔧 Creating RecursiveRetriever...")
     
-    main_index = VectorStoreIndex(summary_nodes)
-    summary_retriever = main_index.as_retriever(similarity_top_k=2, verbose=True)
+    # This is the retriever for the top-level index of cluster gateways
+    root_retriever = main_index.as_retriever(similarity_top_k=5, verbose=True)
     
-    print(f"🔧 Creating RecursiveRetriever (summary-first → protein engines)...")
+    # --- KEY CHANGE 2: Combine all retrievers into a single dictionary ---
+    # The 'vector' key is a default ID for the root retriever.
+    full_retriever_dict = {"vector": root_retriever, **sub_retriever_dict}
+
     recursive_retriever = RecursiveRetriever(
-        "vector",
-        retriever_dict={"vector": summary_retriever},
-        query_engine_dict=query_engine_dict,
+        "vector", # This tells it to start with the root retriever
+        retriever_dict=full_retriever_dict,
         verbose=True,
     )
     
-    print("✅ RecursiveRetriever created successfully!")
-    if hasattr(recursive_retriever, '_retriever_dict'):
-        print(f"  - Retriever dict keys: {list(recursive_retriever._retriever_dict.keys())}")
-    print(f"  - Protein engines: {len(query_engine_dict)}")
-    
-    
+    # The final query engine wraps the corrected retriever for synthesis
     recursive_query_engine = RetrieverQueryEngine.from_args(
         retriever=recursive_retriever,
         response_mode="tree_summarize",
@@ -375,17 +294,6 @@ Cluster Summary: {rec.summary}
     )
     
     print("✅ Summary-first recursive retrieval system built successfully!")
-    
-    # Save the index
-    try:
-        os.makedirs(persist_dir, exist_ok=True)
-        main_index.storage_context.persist(persist_dir=index_dir)
-        with open(hash_file, 'w') as f:
-            f.write(data_hash)
-        print("💾 Index saved to storage for future use!")
-    except Exception as e:
-        print(f"⚠️  Failed to save index: {e}")
-    
     return recursive_query_engine, main_index
 
 # ---------- internet search functions (fake for now) ----------
@@ -758,7 +666,7 @@ def create_bio_rag_system(recursive_query_engine, cluster_records: dict[str, Clu
     return query_bio_system  # Just return the function, no extra methods
 
 # ---------- end-to-end init ----------
-def init_pipeline(paths: dict, max_clusters: int = 10, max_proteins_per_cluster: int = 20):
+def init_pipeline(paths: dict, max_clusters: int = 500, max_proteins_per_cluster: int = 200):
     # Step 1: Load ALL 600MB data into memory (complete structure)
     print("Loading full 600MB dataset into memory...")
     all_cluster_records, roots = build_cluster_records(paths)
@@ -776,6 +684,50 @@ def init_pipeline(paths: dict, max_clusters: int = 10, max_proteins_per_cluster:
     bio_rag_system = create_bio_rag_system(recursive_query_engine, all_cluster_records)
     
     return bio_rag_system, all_cluster_records, recursive_query_engine
+def debug_recursive_retriever(query_engine, cluster_records):
+    """
+    A helper function to test the raw output of the RecursiveRetriever.
+    This bypasses the final synthesis step to show exactly which nodes are being fetched.
+    """
+    print("\n" + "="*50)
+    print("🛠️ RUNNING RECURSIVE RETRIEVER DEBUG 🛠️")
+    print("="*50)
+    
+    retriever = query_engine.retriever
+    query = input("Enter a query to test retrieval: ").strip()
+    if not query:
+        print("No query provided. Aborting debug.")
+        return
+
+    print(f"\n🔍 Retrieving raw nodes for query: '{query}'...")
+    try:
+        retrieved_nodes = retriever.retrieve(query)
+        print(f"\n✅ Retrieval successful! Found {len(retrieved_nodes)} raw nodes.")
+        
+        if not retrieved_nodes:
+            print("No nodes were retrieved. The query may not have matched any cluster summaries.")
+            return
+
+        print("\n--- RETRIEVED NODES ANALYSIS ---")
+        for i, node_with_score in enumerate(retrieved_nodes):
+            node = node_with_score.node
+            node_type = node.metadata.get("node_type", "unknown")
+            cluster_id = node.metadata.get("cluster_id", "N/A")
+            protein_id = node.metadata.get("protein_id", "N/A")
+            
+            print(f"\n📄 Node {i+1} (Score: {node_with_score.score:.4f})")
+            print(f"   - Type: {node_type}")
+            if node_type == "protein":
+                print(f"   - From Cluster: {cluster_id}")
+                print(f"   - Protein ID: {protein_id}")
+            else:
+                print(f"   - Cluster ID: {cluster_id}")
+            print(f"   - Text: {node.get_content()[:150].strip()}...")
+        print("\n" + "="*50)
+
+    except Exception as e:
+        print(f"\n❌ An error occurred during retrieval: {e}")
+    print("Debug session finished.")
 
 # ---------- demo ----------
 if __name__ == "__main__":
