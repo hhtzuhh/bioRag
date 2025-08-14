@@ -1,0 +1,204 @@
+#string_taxon_id	cluster_id	cluster_size	best_described_by
+9606	CL:39184	7	mixed, incl. Protein FAM81, and Bacterial Ig-like domain 2
+9606	CL:39182	13	mostly uncharacterized, incl. Protein FAM81, and Bacterial Ig-like domain 2
+9606	CL:39156	26	mostly uncharacterized, incl. Mesothelin, and Protein FAM81
+9606	CL:34	19587	Cellular_component
+9606	CL:30	19592	Cellular_component
+9606	CL:25	19597	Cellular_component
+9606	CL:20	19602	Cellular_component
+9606	CL:15	19607	Cellular_component
+9606	CL:10	19612	Cellular_component
+9606	CL:5	19617	Cellular_component
+9606	CL:0	19622	Cellular_component
+9606	CL:39173	5	mixed, incl. Coiled-coil domain-containing protein 89-like, and RFX-like DNA-binding protein
+9606	CL:39157	13	mostly uncharacterized, incl. Mesothelin, and Coiled-coil domain-containing protein 89-like
+9606	CL:39158	8	mixed, incl. Mesothelin, and Beta oxidation of butanoyl-CoA to acetyl-CoA
+9606	CL:39142	7	mixed, incl. NF-kappa-B-activating protein, and Olfactory receptor
+9606	CL:39006	75	Cadherin, N-terminal, and Domain of unknown function (DUF4596)
+9606	CL:38472	342	Detection of chemical stimulus involved in sensory perception, and Cadherin, N-terminal
+9606	CL:35	19561	Cellular_component
+9606	CL:39124	8	Cadherin, C-terminal catenin-binding domain, and Domain of unknown function (DUF4596)
+9606	CL:39102	19	Cadherin, C-terminal catenin-binding domain
+9606	CL:39007	68	Cadherin, N-terminal, and Domain of unknown function (DUF4596)
+9606	CL:39106	6	Cadherin, C-terminal catenin-binding domain
+9606	CL:39103	11	Cadherin, C-terminal catenin-binding domain
+9606	CL:39075	5	Cadherin, C-terminal catenin-binding domain
+9606	CL:39063	11	Cadherin, C-terminal catenin-binding domain
+9606	CL:39061	18	Cadherin, C-terminal catenin-binding domain
+9606	CL:39008	47	Cadherin, N-terminal, and Autosomal recessive nonsyndromic deafness 93
+9606	CL:39064	6	Cadherin, C-terminal catenin-binding domain
+9606	CL:39046	6	Expression and translocation of olfactory receptors
+9606	CL:39009	26	mixed, incl. Cadherin, cytoplasmic C-terminal domain, and POM121 family
+9606	CL:39032	5	Cadherin-like, and Cadherin, cytoplasmic C-terminal domain
+9606	CL:39012	15	Cadherin-like, and Cadherin, cytoplasmic C-terminal domain
+9606	CL:39015	6	Cadherin-like, and Cadherin, cytoplasmic C-terminal domain
+9606	CL:38997	5	D-Tyr-tRNA(Tyr) deacylase, and Complement receptor activity
+9606	CL:38985	11	mixed, incl. D-Tyr-tRNA(Tyr) deacylase, and C2 calcium-dependent domain-containing protein 4C/4D
+9606	CL:38473	267	Detection of chemical stimulus involved in sensory perception, and Trace-amine receptor activity
+9606	CL:38986	6	mixed, incl. C2 calcium-dependent domain-containing protein 4C/4D, and GRB2-associated-binding protein 1-4-like
+9606	CL:38971	5	mixed, incl. Hormone receptor domain, and Serotonin receptor activity
+9606	CL:38920	33	mostly uncharacterized, incl. Hypoparathyroidism-retardation-dysmorphism syndrome, and Serotonin receptor activity
+9606	CL:38474	256	Detection of chemical stimulus involved in sensory perception, and Trace-amine receptor activity
+9606	CL:38926	7	mixed, incl. Rad52 family, and Protein FAM221A/B
+9606	CL:38924	13	mostly uncharacterized, incl. Rad52 family, and Protein FAM221A/B
+9606	CL:38922	21	mostly uncharacterized, incl. Hypoparathyroidism-retardation-dysmorphism syndrome, and Rad52 family
+9606	CL:38902	8	mixed, incl. Uncharacterized protein C11orf98, and FAM75 family
+9606	CL:38834	42	mixed, incl. Odorant binding, and Olfactory receptor subfamily 6C-like
+9606	CL:38475	223	Detection of chemical stimulus involved in sensory perception, and Trace-amine receptor activity
+9606	CL:38891	6	mixed, incl. Dissociative disorder, and Central nervous system primitive neuroectodermal neoplasm
+9606	CL:38835	34	mixed, incl. Olfactory receptor subfamily 6C-like, and Odorant binding
+9606	CL:38845	6	Odorant binding, and B-Box-type zinc finger
+9606	CL:38842	12	mixed, incl. Protein localization to Golgi membrane, and Odorant binding
+9606	CL:38840	17	mostly uncharacterized, incl. Olfactory receptor subfamily 6C-like, and Protein localization to Golgi membrane
+9606	CL:38837	24	mixed, incl. Odorant binding, and Olfactory receptor subfamily 6C-like
+9606	CL:38816	5	mixed, incl. Solute carrier family 35 member F3/F4, and Viral infectious disease
+9606	CL:38814	10	mixed, incl. CDC42 small effector protein, and Solute carrier family 35 member F3/F4
+9606	CL:38476	179	Detection of chemical stimulus involved in sensory perception, and Trace-amine receptor activity
+9606	CL:38787	6	mixed, incl. FAM187A/B, and ABC transporter A
+9606	CL:38785	11	mixed, incl. Chibby family, and FAM187A/B
+9606	CL:38478	166	Detection of chemical stimulus involved in sensory perception
+9606	CL:38766	6	Expression and translocation of olfactory receptors
+9606	CL:38479	153	Detection of chemical stimulus involved in sensory perception
+9606	CL:38749	7	Serpentine type 7TM GPCR chemoreceptor Srx, and Serpentine type 7TM GPCR chemoreceptor Srsx
+9606	CL:38480	143	Detection of chemical stimulus involved in sensory perception
+9606	CL:38737	6	Small intestine benign neoplasm, and Expression and translocation of olfactory receptors
+9606	CL:38621	64	mixed, incl. Taste, and Trace-amine receptor activity
+9606	CL:38481	134	Detection of chemical stimulus involved in sensory perception
+9606	CL:38724	7	mixed, incl. Juvenile polyposis-hereditary hemorrhagic telangiectasia syndrome, and GPCRs, other
+9606	CL:38622	58	mixed, incl. Taste, and Trace-amine receptor activity
+9606	CL:38700	5	Trace-amine receptor activity
+9606	CL:38698	10	Trace-amine receptor activity, and Small EDRK-rich factor 1/2
+9606	CL:38623	51	mixed, incl. Taste receptor type 2, and Trace-amine receptor activity
+9606	CL:38688	5	mixed, incl. Spitzoid melanoma, and Basigin-like
+9606	CL:38624	37	Taste receptor type 2, and GPCR, family 3, extracellular calcium-sensing receptor-related
+9606	CL:38641	6	GPCR, family 3, extracellular calcium-sensing receptor-related, and PLC-beta C terminal
+9606	CL:38637	12	Taste receptor activity, and PLC-beta C terminal
+9606	CL:38632	17	Taste receptor activity
+9606	CL:38629	23	Taste receptor activity, and PLC-beta C terminal
+9606	CL:38627	28	Taste receptor type 2, and GPCR, family 3, extracellular calcium-sensing receptor-related
+9606	CL:38608	6	Odorant binding
+9606	CL:38482	70	Expression and translocation of olfactory receptors
+9606	CL:38587	5	Serpentine type 7TM GPCR chemoreceptor Srsx
+9606	CL:38583	12	Olfactory receptor, and Serpentine type 7TM GPCR chemoreceptor Srsx
+9606	CL:38483	62	Expression and translocation of olfactory receptors
+9606	CL:38568	5	mixed, incl. Transmembrane protein TMEM114/TMEM235, and Trochlear nerve disease
+9606	CL:38564	10	mixed, incl. Transmembrane protein TMEM114/TMEM235, and Trochlear nerve disease
+9606	CL:38484	50	Expression and translocation of olfactory receptors
+9606	CL:38530	8	mixed, incl. Serotonin receptor activity, and Fertilization
+9606	CL:38492	27	mixed, incl. Olfactory receptor binding, and Serpentine type 7TM GPCR chemoreceptor Srsx
+9606	CL:38487	32	mixed, incl. Olfactory receptor binding, and Serpentine type 7TM GPCR chemoreceptor Srsx
+9606	CL:38485	40	Expression and translocation of olfactory receptors
+9606	CL:38521	5	Olfactory receptor binding, and Odorant binding
+9606	CL:38493	19	mixed, incl. Olfactory receptor binding, and Odorant binding
+9606	CL:38507	5	Odorant binding, and Expression and translocation of olfactory receptors
+9606	CL:38497	10	Serpentine type 7TM GPCR chemoreceptor Srsx, and Odorant binding
+9606	CL:38498	5	Serpentine type 7TM GPCR chemoreceptor Srsx
+9606	CL:38460	6	mixed, incl. F-box only protein 25/32, and FGD1-4, C-terminal PH domain
+9606	CL:38442	15	mostly uncharacterized, incl. Protein STPG4, and F-box only protein 25/32
+9606	CL:38412	30	mostly uncharacterized, incl. Positive regulation of isotype switching, and Protein STPG4
+9606	CL:38338	67	mostly uncharacterized, incl. Positive regulation of isotype switching, and Regulation of ATPase-coupled calcium transmembrane transporter activity
+9606	CL:36	19218	Cellular_component
+9606	CL:38444	6	mixed, incl. Protein of unknown function (DUF3699) , and Kelch
+9606	CL:38416	7	mixed, incl. Telomere maintenance in response to DNA damage, and Flagellar C1a complex subunit C1a-32
+9606	CL:38414	12	mixed, incl. Telomere maintenance in response to DNA damage, and DNA double-strand break attachment to nuclear envelope
+9606	CL:38399	7	mixed, incl. Protein of unknown function DUF4659, and CBF1-interacting co-repressor CIR, N-terminal domain
+9606	CL:38383	15	mixed, incl. Regulation of ATPase-coupled calcium transmembrane transporter activity, and Joubert syndrome 4
+9606	CL:38339	37	mostly uncharacterized, incl. Regulation of ATPase-coupled calcium transmembrane transporter activity, and Joubert syndrome 4
+9606	CL:38385	6	mixed, incl. Domain of unknown function (DUF4713), and Regulation of slow-twitch skeletal muscle fiber contraction
+9606	CL:38374	5	mixed, incl. Olfactory receptor, and Alpha/Beta hydrolase fold
+9606	CL:38340	22	mostly uncharacterized, incl. Domain of unknown function (DUF4596), and Protein FAM240
+9606	CL:38357	7	mixed, incl. Protein FAM240, and Death domain
+9606	CL:38343	14	mostly uncharacterized, incl. Protein FAM240, and Reprimo family
+9606	CL:38345	5	uncharacterized
+9606	CL:38327	6	mixed, incl. Chordin-like protein 1/2, and Positive regulation of corticotropin-releasing hormone secretion
+9606	CL:38311	14	mostly uncharacterized, incl. Chordin-like protein 1/2, and Heterochromatin assembly by small RNA
+9606	CL:38267	36	mostly uncharacterized, incl. Differentiation and proliferation regulator, and Cone-rod dystrophy 13
+9606	CL:38193	73	mostly uncharacterized, incl. Humanin family, and Differentiation and proliferation regulator
+9606	CL:37	19151	Cellular_component
+9606	CL:38313	5	mixed, incl. Heterochromatin assembly by small RNA, and PLAC8 family
+9606	CL:38300	6	mixed, incl. Differentiation and proliferation regulator, and Ubiquitin-protein ligase E3A/B/C-like
+9606	CL:38268	22	mostly uncharacterized, incl. Differentiation and proliferation regulator, and Cone-rod dystrophy 13
+9606	CL:38289	6	mixed, incl. Protein FAM240, and Regulation of organelle transport along microtubule
+9606	CL:38269	16	mostly uncharacterized, incl. Cone-rod dystrophy 13, and Proline-rich protein family 20
+9606	CL:38280	5	mixed, incl. Proline-rich protein family 20, and Proline-rich protein family 20
+9606	CL:38270	10	mixed, incl. Cone-rod dystrophy 13, and Proline-rich protein family 20
+9606	CL:38271	5	mixed, incl. Cone-rod dystrophy 13, and Hypoxia induced protein, domain
+9606	CL:38244	5	Protein canopy homolog, and ARMET-like
+9606	CL:38242	13	mixed, incl. Acheiropody, and Protein canopy homolog
+9606	CL:38194	37	mixed, incl. Humanin family, and Acheiropody
+9606	CL:38222	8	Humanin family
+9606	CL:38195	24	mixed, incl. Humanin family, and Bells palsy
+9606	CL:38198	5	mixed, incl. Lipase-like, and Phosphoribosyltransferase C-terminal
+9606	CL:38196	13	mostly uncharacterized, incl. Lipase-like, and Phosphoribosyltransferase C-terminal
+9606	CL:38172	5	Glycoprotein hormone beta chain homologues., and Zinc finger, RING-type, conserved site
+9606	CL:38170	12	mixed, incl. Glycoprotein hormone beta chain homologues., and STIMATE family
+9606	CL:38128	33	mostly uncharacterized, incl. Glycoprotein hormone beta chain homologues., and Extrinsic component of endosome membrane
+9606	CL:38	19078	Cellular_component
+9606	CL:38155	8	mixed, incl. FAM24 family, and Essential tremor 1
+9606	CL:38129	21	mostly uncharacterized, incl. Extrinsic component of endosome membrane, and PWWP domain
+9606	CL:38144	6	mixed, incl. Transmembrane protein 251, and Extrinsic component of endosome membrane
+9606	CL:38130	13	mixed, incl. Extrinsic component of endosome membrane, and SPATS2-like
+9606	CL:38131	7	mixed, incl. SPATS2-like, and Peroxiredoxin-like 2A/B/C
+9606	CL:38119	5	Autosomal recessive woolly hair 3, and Seminal vesicle tumor
+9606	CL:38097	16	mixed, incl. Autosomal recessive woolly hair 3, and EMI domain
+9606	CL:39	19045	Cellular_component
+9606	CL:38110	5	Domain of unknown function DUF4657, and EMI domain
+9606	CL:38098	11	mixed, incl. EMI domain, and Domain of unknown function DUF4657
+9606	CL:38099	6	mixed, incl. Immortalization up-regulated protein, and Fibronectin type III and SPRY containing 1, PRY/SPRY domain
+9606	CL:38084	7	mixed, incl. Ninjurin, and Neurensin
+9606	CL:38066	16	mostly uncharacterized, incl. Paraoxonase2, and Ninjurin
+9606	CL:37986	56	mostly uncharacterized, incl. KBG syndrome, and Paraoxonase2
+9606	CL:40	19029	Cellular_component
+9606	CL:38068	6	mixed, incl. Paraoxonase2, and G2F domain
+9606	CL:38055	6	mixed, incl. Domain of unknown function DUF4195, and Protein deglycation
+9606	CL:38043	12	mixed, incl. KBG syndrome, and Domain of unknown function DUF4195
+9606	CL:37987	40	mostly uncharacterized, incl. KBG syndrome, and FAM153 family
+9606	CL:38044	6	mixed, incl. KBG syndrome, and Copine
+9606	CL:38028	6	mixed, incl. Negative regulation of glycogen biosynthetic process, and Solute carrier family 12
+9606	CL:37988	28	mostly uncharacterized, incl. FAM153 family, and Laa1/Sip1/HEATR5
+9606	CL:38015	6	mixed, incl. FAM153 family, and GPCR-chaperone
+9606	CL:37989	19	mostly uncharacterized, incl. FAM153 family, and Laa1/Sip1/HEATR5
+9606	CL:38001	5	mixed, incl. Laa1/Sip1/HEATR5, and Glycine N-acyltransferase
+9606	CL:37991	10	mixed, incl. Laa1/Sip1/HEATR5, and Glycine N-acyltransferase
+9606	CL:37992	5	uncharacterized
+9606	CL:37977	5	FEZ-like protein, and Protein canopy homolog
+9606	CL:37963	12	mixed, incl. FEZ-like protein, and Protein canopy homolog
+9606	CL:37923	32	mostly uncharacterized, incl. FEZ-like protein, and FAM24 family
+9606	CL:41	18973	Cellular_component
+9606	CL:37965	6	mixed, incl. Negative regulation of vascular associated smooth muscle contraction, and Olfactomedin-like domain
+9606	CL:37948	8	mixed, incl. Flagellar C1a complex subunit C1a-32, and Cerebrospinal fluid circulation
+9606	CL:37924	20	mostly uncharacterized, incl. FAM24 family, and XRN2-binding (XTBD) domain
+9606	CL:37939	5	mixed, incl. XRN2-binding (XTBD) domain, and EP300-interacting inhibitor of differentiation
+9606	CL:37925	12	mostly uncharacterized, incl. FAM24 family, and XRN2-binding (XTBD) domain
+9606	CL:37926	7	mixed, incl. FAM24 family, and PD-(D/E)XK nuclease superfamily
+9606	CL:37912	6	mixed, incl. ARHGAP6/36, RhoGAP domain, and PI3K p85 subunit, C-terminal SH2 domain
+9606	CL:37898	13	mostly uncharacterized, incl. Flavodoxin-like fold, and ARHGAP6/36, RhoGAP domain
+9606	CL:37864	30	mostly uncharacterized, incl. FAM177 family, and CEP170 C-terminus
+9606	CL:37790	67	mostly uncharacterized, incl. Maestro heat-like repeat-containing protein, and XLR/SYCP3/FAM9 domain
+9606	CL:42	18941	Cellular_component
+9606	CL:37899	7	mixed, incl. Flavodoxin-like fold, and ADP-ribosylarginine hydrolase
+9606	CL:37885	7	mixed, incl. FAM177 family, and Motile sperm domain-containing protein 1/3
+9606	CL:37865	17	mostly uncharacterized, incl. FAM177 family, and CEP170 C-terminus
+9606	CL:37868	5	mixed, incl. CEP170 C-terminus, and Hatching
+9606	CL:37866	10	mixed, incl. CEP170 C-terminus, and Paraneoplastic encephalomyelitis antigen
+9606	CL:37848	6	Maestro heat-like repeat-containing protein
+9606	CL:37834	13	mixed, incl. Maestro heat-like repeat-containing protein, and FAM217 family
+9606	CL:37791	37	mostly uncharacterized, incl. Maestro heat-like repeat-containing protein, and XLR/SYCP3/FAM9 domain
+9606	CL:37835	7	mixed, incl. FAM217 family, and Seven-in-absentia protein, TRAF-like domain
+9606	CL:37819	5	mixed, incl. Papillon-Lefevre disease, and Domain of unknown function with conserved HDNR motif
+9606	CL:37792	21	mostly uncharacterized, incl. XLR/SYCP3/FAM9 domain, and Papillon-Lefevre disease
+9606	CL:37809	5	mixed, incl. XLR/SYCP3/FAM9 domain
+9606	CL:37793	13	mixed, incl. XLR/SYCP3/FAM9 domain, and Spermatogenic failure 25
+9606	CL:37795	5	mixed, incl. Spermatogenic failure 25, and KANL3/Tex30, alpha/beta hydrolase-like domain
+9606	CL:37779	6	mixed, incl. FAM212 family, and FAM194 protein
+9606	CL:37755	18	mostly uncharacterized, incl. FAM212 family, and Regulation of epithelium regeneration
+9606	CL:37667	62	mostly uncharacterized, incl. Cell cycle regulatory protein, and EPM2A-interacting protein 1/ZBED8-like
+9606	CL:43	18874	Cellular_component
+9606	CL:37759	5	mixed, incl. Regulation of epithelium regeneration, and FAM43A/B, phosphotyrosine-binding domain
+9606	CL:37757	10	mixed, incl. Regulation of epithelium regeneration, and FAM43A/B, phosphotyrosine-binding domain
+9606	CL:37744	6	Cell cycle regulatory protein
+9606	CL:37716	20	mixed, incl. Cell cycle regulatory protein, and EPM2A-interacting protein 1/ZBED8-like
+9606	CL:37668	44	mostly uncharacterized, incl. Cell cycle regulatory protein, and EPM2A-interacting protein 1/ZBED8-like
+9606	CL:37733	6	mixed, incl. RAD51 interacting motif, and EPM2A-interacting protein 1/ZBED8-like
+9606	CL:37717	14	mixed, incl. EPM2A-interacting protein 1/ZBED8-like, and RAD51 interacting motif
+9606	CL:37718	8	mixed, incl. Leucine-rich repeat family 19 TM domain, and EPM2A-interacting protein 1/ZBED8-like
